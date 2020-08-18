@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">WeatherProgect</string>
+    <string name="region">Город</string>
+    <string name="temperature">Температура</string>
+    <string name="wind">Ветер</string>
+    <string name="direction">Направление</string>
+    <string name="windPower">Сила ветра</string>
+    <string name="humidity">Влажность</string>
+    <string name="humidityValue">Значение влажности</string>
+    <string name="pressure">Давление</string>
+    <string name="pressureValue">Значение давления</string>
+    <string name="sunrise">Восход солнца</string>
+    <string name="sunriseTime">Время</string>
+    <string name="sunset">Заход солнца</string>
+    <string name="sunsetTime">Время</string>
+    <string name="dayLength">Продолжительность дня</string>
+    <string name="dayLengthTime">Время</string>
+    <string name="choosingASity">Выбрать город</string>
+    <string name="forecast">Прогноз</string>
+    <string name="settings">Настройки</string>
+    <string name="weather">Текущая погода</string>
+    <string name="settingsOnSett">Настройки</string>
+    <string name="setLanguage">Выбор языка</string>
+    <string name="setBackgraund">Выбор фона</string>
+    <string name="setUnits">Единицы измерения</string>
+    <string name="setMode">Режим отображения</string>
+    <string name="setMaps">Карты</string>
+
+
+</resources>
