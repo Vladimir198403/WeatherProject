@@ -25,6 +25,14 @@
     <string name="setUnits">Единицы измерения</string>
     <string name="setMode">Режим отображения</string>
     <string name="setMaps">Карты</string>
+    <string name="chooseLen">Выберите язык</string>
+    <string-array name="spinnerLen">
+        <item>Русский</item>
+        <item>English</item>
+    </string-array>
+    <string name="selectLen">Выбрать язык</string>
+    <string name="textViewlen2">Вы изменили язык на </string>
+    <string name="textViewLen3"></string>
 
 
 </resources>

@@ -39,7 +39,9 @@
                     android:id="@+id/setLanguage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/setLanguage" />
+                    android:onClick="ToLenguage"
+                    android:text="@string/setLanguage"
+                    tools:ignore="OnClick" />
 
                 <Button
                     android:id="@+id/setBackgraund"
@@ -79,8 +81,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:onClick="toWeather"
                 android:visibility="visible"
-                android:text="@string/weather" />
+                android:text="@string/weather"
+                tools:ignore="OnClick" />
 
             <Button
                 android:id="@+id/forecast"
