@@ -12,24 +12,54 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LenguageSet extends AppCompatActivity {
+public class LenguageSet extends AppCompatActivity implements Constants {
+
 
     Button lenChoose;
-    @SuppressLint("ResourceType")
-    private String chooseLen = getString(R.id.textViewLen3);
 
+//    @SuppressLint("ResourceType")
+//    private final String setLen = (String) getText(R.id.textViewLen3);
+
+    private TextView chooseLeng;
+    TextView textViewLen3;
+    private String lenguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lenguage_set);
+        String instanceString;
+        if (savedInstanceState == null) {
+            instanceString = "Первый запуск";
+            Log.d("My tag", "первый запуск активити настройки ");
+        } else {
+            instanceString = "Повторный запуск";
+        }
+        Toast.makeText(getApplicationContext(), instanceString + " - onCreate()", Toast.LENGTH_SHORT).show();
     }
 
-    public void selectLenguage(View view){
-        TextView textViewLen3 = (TextView)findViewById(R.id.textViewLen3);
-        Spinner spinnerLen = (Spinner)findViewById(R.id.spinnerLen);
-        String lenguage = String.valueOf(spinnerLen.getSelectedItem());
+    public void selectLenguage(View view) {
+        textViewLen3 = (TextView) findViewById(R.id.textViewLen3);
+        Spinner spinnerLen = (Spinner) findViewById(R.id.spinnerLen);
+        lenguage = String.valueOf(spinnerLen.getSelectedItem());
         textViewLen3.setText(lenguage);
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
+        Log.d("My tag", "onSaveInstanceState активити настроек ");
+        outState.putString(LENG, lenguage);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Toast.makeText(getApplicationContext(), "Повторный запуск - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
+        Log.d("My tag", "onRestoreInstanceState активити настроек ");
+        savedInstanceState.getString(LENG);
     }
 
     @Override
@@ -38,55 +68,38 @@ public class LenguageSet extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onStart()", Toast.LENGTH_SHORT).show();
         Log.d("My tag", "onStart активити настроек ");
     }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Toast.makeText(getApplicationContext(), "Повторный запуск - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
-        Log.d("My tag", "onRestoreInstanceState активити настроек языка ");
-        chooseLen = savedInstanceState.getString("Lenguage");
-    }
-
     @Override
     protected void onPostResume() {
         super.onPostResume();
         Toast.makeText(getApplicationContext(), "onResume()", Toast.LENGTH_SHORT).show();
-        Log.d("My tag", "onPostResume активити настроек языка ");
+        Log.d("My tag", "onPostResume активити настроек ");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         Toast.makeText(getApplicationContext(), "onPause", Toast.LENGTH_SHORT).show();
-        Log.d("My tag", "onPause активити настроек языка ");
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle saveInstanceState) {
-        super.onSaveInstanceState(saveInstanceState);
-        Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
-        Log.d("My tag", "onSaveInstanceState активити настроек языка ");
-        saveInstanceState.putString("Lenguage", chooseLen);
+        Log.d("My tag", "onPause активити настроек ");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Toast.makeText(getApplicationContext(), "onStop", Toast.LENGTH_SHORT).show();
-        Log.d("My tag", "onStop активити настроек языка");
+        Log.d("My tag", "onStop активити настроек ");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         Toast.makeText(getApplicationContext(), "onResume", Toast.LENGTH_SHORT).show();
-        Log.d("My tag", "onRestart активити настроек языка ");
+        Log.d("My tag", "onRestart активити настроек ");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Toast.makeText(getApplicationContext(), "onDestroy", Toast.LENGTH_SHORT).show();
-        Log.d("My tag", "onDestroy активити настроек языка ");
+        Log.d("My tag", "onDestroy активити настроек ");
     }
 }

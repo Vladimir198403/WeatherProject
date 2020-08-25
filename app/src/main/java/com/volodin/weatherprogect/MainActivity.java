@@ -8,16 +8,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements Constants{
+TextView city;
     Button settings;
+    Button toChoiceSity;
+    String choiceSity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        city = (TextView)findViewById(R.id.region);
+        choiceSity = getIntent().getExtras().getString(SITY);
+        city.setText(choiceSity);
+
         String instanceString;
         if (savedInstanceState == null) {
             instanceString = "Первый запуск";
@@ -38,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setToChoiceSity() {
+        toChoiceSity = (Button) findViewById(R.id.choosingASity);
+        toChoiceSity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toChoiceSity(view);
+            }
+        });
+    }
+
 
     public void toSettings(View view) {
         startActivity(new Intent(MainActivity.this, SettingsActivity.class));
@@ -46,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
     public void toForecast(View view) {
         startActivity(new Intent(MainActivity.this, ForecastActivity.class));
     }
+
+    public void toChoiceSity(View view) {
+        startActivity(new Intent(MainActivity.this, ChoiceSity.class));
+    }
+
 
     @Override
     protected void onStart() {

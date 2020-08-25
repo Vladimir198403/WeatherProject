@@ -33,6 +33,8 @@
     <string name="selectLen">Выбрать язык</string>
     <string name="textViewlen2">Вы изменили язык на </string>
     <string name="textViewLen3"></string>
+    <string name="textViewChoiceSity">Выберите город</string>
+    <string name="buttonChoiseCity">Выбрать</string>
 
 
 </resources>
