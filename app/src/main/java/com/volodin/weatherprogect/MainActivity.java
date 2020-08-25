@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements Constants{
-TextView city;
+import java.util.Objects;
+
+public class MainActivity extends AppCompatActivity implements Constants {
+    TextView city;
     Button settings;
     Button toChoiceSity;
     String choiceSity;
@@ -22,8 +24,8 @@ TextView city;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        city = (TextView)findViewById(R.id.region);
-        choiceSity = getIntent().getExtras().getString(SITY);
+        //choiceSity = getIntent().getExtras().getString(SITY);
+        city = (TextView) findViewById(R.id.region);
         city.setText(choiceSity);
 
         String instanceString;

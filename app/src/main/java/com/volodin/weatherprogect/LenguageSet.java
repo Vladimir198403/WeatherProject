@@ -21,13 +21,17 @@ public class LenguageSet extends AppCompatActivity implements Constants {
 //    private final String setLen = (String) getText(R.id.textViewLen3);
 
     private TextView chooseLeng;
-    TextView textViewLen3;
+    private String txt;
     private String lenguage;
+    Spinner spinnerLen;
+    TextView textViewLen3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lenguage_set);
+        textViewLen3 = (TextView) findViewById(R.id.textViewLen3);
+        spinnerLen = (Spinner) findViewById(R.id.spinnerLen);
         String instanceString;
         if (savedInstanceState == null) {
             instanceString = "Первый запуск";
@@ -39,8 +43,6 @@ public class LenguageSet extends AppCompatActivity implements Constants {
     }
 
     public void selectLenguage(View view) {
-        textViewLen3 = (TextView) findViewById(R.id.textViewLen3);
-        Spinner spinnerLen = (Spinner) findViewById(R.id.spinnerLen);
         lenguage = String.valueOf(spinnerLen.getSelectedItem());
         textViewLen3.setText(lenguage);
     }
@@ -51,7 +53,8 @@ public class LenguageSet extends AppCompatActivity implements Constants {
         super.onSaveInstanceState(outState);
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d("My tag", "onSaveInstanceState активити настроек ");
-        outState.putString(LENG, lenguage);
+        txt = lenguage;
+        outState.putString(LENG, txt);
     }
 
     @Override
@@ -59,7 +62,9 @@ public class LenguageSet extends AppCompatActivity implements Constants {
         super.onRestoreInstanceState(savedInstanceState);
         Toast.makeText(getApplicationContext(), "Повторный запуск - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d("My tag", "onRestoreInstanceState активити настроек ");
-        savedInstanceState.getString(LENG);
+        txt = savedInstanceState.getString(LENG);
+        textViewLen3.setText(txt);
+
     }
 
     @Override
@@ -68,6 +73,7 @@ public class LenguageSet extends AppCompatActivity implements Constants {
         Toast.makeText(getApplicationContext(), "onStart()", Toast.LENGTH_SHORT).show();
         Log.d("My tag", "onStart активити настроек ");
     }
+
     @Override
     protected void onPostResume() {
         super.onPostResume();
