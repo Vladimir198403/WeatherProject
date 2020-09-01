@@ -1,49 +1,65 @@
 package com.volodin.weatherprogect;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class ChoiceSity extends AppCompatActivity implements Constants {
 
-    String[] city = {"Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Нижний Новгород", "Казань", "Челябинск", "Омск", "Самара",
-            "Ростов-на-Дону", "Уфа", "Красноярск", "Воронеж", "Пермь", "Волгоград"};
-
-    Button choiceCity;
+    RecyclerView recyclerView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choice_sity);
 
-        AutoCompleteTextView cityArray = (AutoCompleteTextView) findViewById(R.id.sityArr);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, city);
-        cityArray.setAdapter(adapter);
+        String[] cities = getResources().getStringArray(R.array.spinnerCity);
+        initRecycleView(cities);
     }
 
-    public void ChoiseCity(View view) {
-        choiceCity = (Button)findViewById(R.id.buttonChoiseCity);
-        choiceCity.setOnClickListener(new View.OnClickListener() {
+    private void initRecycleView(String[] cities) {
+        recyclerView = findViewById(R.id.recycler_view_choice_city);
+
+        // Эта установка служит для повышения производительности системы
+        recyclerView.setHasFixedSize(true);
+
+        // Будем работать со встроенным менеджером
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        //Установим адаптер
+        SocnetAdapter adapter = new SocnetAdapter(cities);
+        recyclerView.setAdapter(adapter);
+
+//установим слушателя
+        adapter.SetOnClickListener(new SocnetAdapter.OnItemClickListener() {
+            @SuppressLint("DefaultLocale")
             @Override
-            public void onClick(View view) {
-                AutoCompleteTextView txt = ChoiceSity.this.findViewById(R.id.sityArr);
-                Log.d("My tag", "выбранный город - " + txt);
-                Intent intent = new Intent(ChoiceSity.this,MainActivity.class);
-                intent.putExtra(SITY, txt.getText().toString());
-                startActivity(intent);
+            public void onItemClick(View v, int position) {
+
+                //              Toast.makeText(ChoiceSity.this, String.format("%s - %d", ((TextView)view).getText(), position), Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
-
-
-
 
 
 }

@@ -36,5 +36,21 @@
     <string name="textViewChoiceSity">Выберите город</string>
     <string name="buttonChoiseCity">Выбрать</string>
 
+    <string-array name="spinnerCity">
+        <item>Москва</item>
+        <item>Санкт-Петербург</item>
+        <item>Новосибирск</item>
+        <item>Екатеринбург</item>
+        <item>Нижний-Новгород</item>
+        <item>Казань</item>
+        <item>Самара</item>
+        <item>Челябинск</item>
+        <item>Омск</item>
+        <item>Ростов-На-Дону</item>
+        <item>Уфа</item>
+        <item>Красноярск</item>
+        <item>Пермь</item>
+    </string-array>
+
 
 </resources>
