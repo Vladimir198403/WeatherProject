@@ -54,7 +54,12 @@ public class ChoiceSity extends AppCompatActivity implements Constants {
             @Override
             public void onItemClick(View v, int position) {
 
-                //              Toast.makeText(ChoiceSity.this, String.format("%s - %d", ((TextView)view).getText(), position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChoiceSity.this, String.format("%d", position), Toast.LENGTH_SHORT).show();
+                final Intent intent = new Intent(ChoiceSity.this, MainActivity.class);
+                intent.putExtra(SITY, position);
+                Log.d("My tag", "position " + position);
+                finish();
+               // Toast.makeText(getApplicationContext(), instanceString + " - onCreate()", Toast.LENGTH_SHORT).show();
             }
         });
 
