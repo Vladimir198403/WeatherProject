@@ -59,7 +59,7 @@ public class ChoiceSity extends AppCompatActivity implements Constants {
                 intent.putExtra(SITY, position);
                 Log.d("My tag", "position " + position);
                 finish();
-               // Toast.makeText(getApplicationContext(), instanceString + " - onCreate()", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), instanceString + " - onCreate()", Toast.LENGTH_SHORT).show();
             }
         });
 

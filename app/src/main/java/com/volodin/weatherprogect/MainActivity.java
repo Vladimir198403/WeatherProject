@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity implements Constants {
         city = (TextView) findViewById(R.id.region);
        // city.setText(choiceSity);
 
+        String choisedCity;
+        choisedCity = getIntent().getStringExtra(SITY);
+        Log.d("My tag", "position " + choisedCity);
+        city.setText(choisedCity);
+
 
 
         String instanceString;
@@ -80,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements Constants {
 
 
 
-        Toast.makeText(getApplicationContext(), "onStart()" , Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "onStart()"  , Toast.LENGTH_SHORT).show();
         Log.d("My tag", "onStart основное активити ");
     }
 
@@ -95,11 +100,8 @@ public class MainActivity extends AppCompatActivity implements Constants {
     protected void onPostResume() {
         super.onPostResume();
 
-        String choisedCity;
-        choisedCity = getIntent().getStringExtra(SITY);
-        Log.d("My tag", "position " + choisedCity);
-        city.setText(choisedCity);
-        Toast.makeText(getApplicationContext(), "onResume()" + choisedCity, Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(getApplicationContext(), "onResume()" , Toast.LENGTH_SHORT).show();
         Log.d("My tag", "onPostResume основное активити ");
     }
 
